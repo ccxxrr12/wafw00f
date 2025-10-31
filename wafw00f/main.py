@@ -30,7 +30,7 @@ class WAFW00F(waftoolsengine):
     xsstring = r'<script>alert("XSS");</script>'
     sqlistring = r'UNION SELECT ALL FROM information_schema AND " or SLEEP(5) or "'
     lfistring = r'../../etc/passwd'
-    rcestring = r'/bin/cat /etc/passwd; ping 127.0.0.1; curl google.com'
+    rcestring = r'/bin/cat /etc/passwd; ping 127.0.0.1; curl baidu.com'
     xxestring = r'<!ENTITY xxe SYSTEM "file:///etc/shadow">]><pwn>&hack;</pwn>'
 
     def __init__(self, target='www.example.com', debuglevel=0, path='/',
