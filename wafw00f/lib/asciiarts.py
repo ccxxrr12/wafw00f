@@ -1,29 +1,39 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 '''
 Copyright (C) 2024, WAFW00F Developers.
 See the LICENSE file for copying permission.
 '''
 
-from dataclasses import dataclass
-from random import randint
+# 导入所需模块
+from dataclasses import dataclass  # 用于创建数据类
+from random import randint         # 用于生成随机整数
 
+# 导入项目版本信息
 from wafw00f import __version__
 
 
 @dataclass
 class Color:
-    """ANSI colors."""
+    """ANSI颜色代码类，用于终端彩色输出"""
+    # 白色
     W: str = '\033[1;97m'
+    # 黄色
     Y: str = '\033[1;93m'
+    # 绿色
     G: str = '\033[1;92m'
+    # 红色
     R: str = '\033[1;91m'
+    # 蓝色
     B: str = '\033[1;94m'
+    # 青色
     C: str = '\033[1;96m'
+    # 结束颜色代码
     E: str = '\033[0m'
 
     @classmethod
     def disable(cls):
-        """Disables all colors."""
+        """禁用所有颜色输出"""
         cls.W = ''
         cls.Y = ''
         cls.G = ''
@@ -34,8 +44,8 @@ class Color:
 
     @classmethod
     def unpack(cls):
-        """Unpacks and returns the color values.
-        Useful for brevity, e.g.:
+        """解包并返回颜色值
+        用于简化使用，例如：
         (W,Y,G,R,B,C,E) = Color.unpack()
         """
         return (
@@ -50,10 +60,10 @@ class Color:
 
 
 def randomArt():
-    # Colors for terminal
-
+    # 终端颜色设置
     (W,Y,G,R,B,C,E) = Color.unpack()
 
+    # Woof ASCII艺术字
     woof = '''
                    '''+W+'''______
                   '''+W+'''/      \\
@@ -70,6 +80,7 @@ def randomArt():
     The Web Application Firewall Fingerprinting Toolkit
     '''+E
 
+    # W00f ASCII艺术字
     w00f = '''
                 '''+W+'''______
                '''+W+'''/      \\
@@ -89,6 +100,7 @@ def randomArt():
         The Web Application Firewall Fingerprinting Toolkit
     '''+E
 
+    # Wo0f ASCII艺术字
     wo0f = r'''
                  ?              ,.   (   .      )        .      "
          __        ??          ("     )  )'     ,'        )  . (`     '`
@@ -100,5 +112,7 @@ def randomArt():
                     ~ Sniffing Web Application Firewalls since 2014 ~
 '''
 
+    # 将所有艺术字放入列表中
     arts = [woof, w00f, wo0f]
+    # 随机返回一个艺术字
     return arts[randint(0, len(arts)-1)]
