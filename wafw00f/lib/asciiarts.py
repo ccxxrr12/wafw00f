@@ -72,6 +72,6 @@ def randomArt():
 
 
     # 将所有艺术字放入列表中
-    arts = [woof, w00f, wo0f]
+    arts = [woof]
     # 随机返回一个艺术字
     return arts[randint(0, len(arts)-1)]
